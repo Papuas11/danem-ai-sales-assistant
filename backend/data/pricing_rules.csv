@@ -1,0 +1,5 @@
+instrument_name,aliases,service_type,price,cost,duration_days,duration_hours,rush_markup_percent,on_site_markup_percent,is_on_site_available
+Манометр,"манометр;манометры;pressure gauge;монометр",Поверка,1800,1100,0,4,30,20,true
+Расходомер,"расходомер;расходомеры;flow meter",Поверка,3500,2000,1,0,30,25,true
+Термометр,"термометр;термометры;thermometer",Калибровка,1500,800,0,3,20,0,false
+Датчик давления,"датчик давления;датчики давления;pressure sensor",Поверка,2200,1300,0,6,25,20,true

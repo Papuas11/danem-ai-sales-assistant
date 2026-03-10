@@ -56,3 +56,50 @@ class DealResponse(BaseModel):
 class DealDetailResponse(DealResponse):
     analysis: AnalysisPayload
     notes: list[dict]
+
+
+class ServiceTypeResponse(BaseModel):
+    id: int
+    name: str
+
+    class Config:
+        from_attributes = True
+
+
+class InstrumentRuleBase(BaseModel):
+    instrument_name: str
+    aliases: str = ""
+    category: str = "general"
+    service_type: str
+    price: float
+    cost: float
+    duration_days: int = 0
+    duration_hours: int = 0
+    rush_markup_percent: float = 0
+    on_site_markup_percent: float = 0
+    is_on_site_available: bool = False
+
+
+class InstrumentRuleCreateRequest(InstrumentRuleBase):
+    pass
+
+
+class InstrumentRuleUpdateRequest(InstrumentRuleBase):
+    pass
+
+
+class InstrumentRuleResponse(BaseModel):
+    id: int
+    instrument_type_id: int
+    service_type_id: int
+    instrument_name: str
+    aliases: str
+    category: str
+    service_type: str
+    price: float
+    cost: float
+    duration_days: int
+    duration_hours: int
+    rush_markup_percent: float
+    on_site_markup_percent: float
+    is_on_site_available: bool

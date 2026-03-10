@@ -11,6 +11,9 @@ export default function HomePage() {
         <Link href="/deals" className="analyze-button inline-btn">
           Открыть сделки
         </Link>
+        <Link href="/instruments" className="analyze-button inline-btn">
+          Справочник приборов
+        </Link>
       </div>
     </main>
   )

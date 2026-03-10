@@ -105,3 +105,30 @@ input {
   margin-top: 10px;
   text-decoration: none;
 }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #e1e4ee;
+  padding: 6px;
+  min-width: 90px;
+}
+
+input[type='checkbox'] {
+  width: auto;
+  margin: 0;
+}

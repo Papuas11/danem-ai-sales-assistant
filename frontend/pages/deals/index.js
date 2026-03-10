@@ -47,6 +47,7 @@ export default function DealsPage() {
   return (
     <main className="container">
       <h1>Сделки</h1>
+      <Link href="/instruments" className="analyze-button inline-btn">Справочник приборов</Link>
 
       <section className="result-card">
         <h3>Новая сделка</h3>
