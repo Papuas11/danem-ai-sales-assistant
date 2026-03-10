@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -69,6 +70,7 @@ export default function DealPage() {
     <main className="container">
       <h1>{deal.title}</h1>
       <p className="subtitle">{deal.client_name}</p>
+      <Link href="/instruments" className="analyze-button inline-btn">Справочник приборов</Link>
       <button className="analyze-button" onClick={reanalyze}>
         Повторный AI-анализ
       </button>

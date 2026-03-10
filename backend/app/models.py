@@ -65,8 +65,10 @@ class PricingRule(Base):
     service_type_id: Mapped[int] = mapped_column(ForeignKey("service_types.id"), nullable=False)
     price: Mapped[float] = mapped_column(Float, nullable=False)
     cost: Mapped[float] = mapped_column(Float, nullable=False)
-    duration_days: Mapped[int] = mapped_column(Integer, nullable=False)
+    duration_days: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    duration_hours: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     rush_markup_percent: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    on_site_markup_percent: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
     is_on_site_available: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
 
     instrument_type: Mapped[InstrumentType] = relationship("InstrumentType")
