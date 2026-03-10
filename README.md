@@ -1,29 +1,39 @@
-# DANEM AI Sales Assistant (MVP)
+# DANEM AI Sales Assistant (MVP v2)
 
-Минимально рабочая версия AI-инструмента для менеджера по продажам метрологических услуг.
+Минимально рабочая CRM+AI версия для метрологических продаж:
+- хранение сделок в PostgreSQL (или SQLite fallback для локального запуска);
+- добавление новой информации по сделке;
+- повторный AI-анализ по всей истории;
+- расчет выручки/себестоимости/прибыли/срока только по `PricingRule`.
 
 ## Структура
+- `backend/` — FastAPI + SQLAlchemy
+- `frontend/` — Next.js (страницы списка и карточки сделки)
 
-- `backend/` — FastAPI API
-- `frontend/` — Next.js UI
+## Модели данных
+- `Deal`
+- `DealNote`
+- `InstrumentType`
+- `ServiceType`
+- `PricingRule`
 
-## Что умеет MVP
-
-- Одна страница с большим текстовым полем
-- Кнопка `Анализировать`
-- Запрос на backend endpoint: `POST /ai/analyze-deal`
-- Анализ сделки через OpenAI API
-- Отображение результата в карточках
-- Базовая обработка ошибок
+## Важная логика
+- AI не придумывает цену: в prompt передаются готовые цифры из базы.
+- Расчеты выполняются по `PricingRule`.
+- Если распознан `манометр`, выбирается соответствующее правило.
 
 ## Требования
-
 - Python 3.10+
 - Node.js 18+
-- `OPENAI_API_KEY` в переменных окружения
+- `OPENAI_API_KEY` (опционально: без него работает fallback-анализ)
+- `DATABASE_URL` (рекомендуется PostgreSQL)
+
+Пример PostgreSQL:
+```bash
+export DATABASE_URL="postgresql+psycopg2://postgres:postgres@localhost:5432/danem"
+```
 
 ## Запуск backend
-
 ```bash
 cd backend
 python -m venv .venv
@@ -34,38 +44,15 @@ uvicorn app.main:app --reload --port 8000
 ```
 
 ## Запуск frontend
-
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Приложение frontend будет доступно на `http://localhost:3000`.
-
-## Endpoint
-
-### `POST /ai/analyze-deal`
-
-Пример body:
-
-```json
-{
-  "deal_text": "Клиенту нужна поверка 120 манометров в течение 2 недель..."
-}
-```
-
-Ответ возвращается строго в JSON с полями:
-
-- `summary`
-- `known_info`
-- `missing_info`
-- `questions_for_client`
-- `recommended_services`
-- `upsell_suggestions`
-- `action_plan`
-- `deal_probability`
-- `potential_revenue`
-- `estimated_timeline`
-- `recommended_next_step`
-- `draft_message_to_client`
+## API
+- `POST /deals` — создать сделку и первый анализ
+- `GET /deals` — список сделок
+- `GET /deals/{id}` — детали сделки
+- `POST /deals/{id}/notes` — добавить заметку и пересчитать анализ
+- `POST /deals/{id}/reanalyze` — повторный анализ
