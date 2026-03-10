@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #f7f8fb;
+  color: #171717;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+h1 {
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  margin: 0 0 20px;
+  color: #555;
+}
+
+.deal-input {
+  width: 100%;
+  min-height: 220px;
+  border-radius: 12px;
+  border: 1px solid #d6d8e1;
+  padding: 16px;
+  font-size: 16px;
+  resize: vertical;
+  background: #fff;
+}
+
+.analyze-button {
+  margin-top: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #2f67f6;
+  color: #fff;
+  padding: 12px 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.analyze-button:disabled {
+  background: #95b0f8;
+  cursor: not-allowed;
+}
+
+.error-box {
+  margin-top: 16px;
+  background: #ffe7e7;
+  border: 1px solid #ffb7b7;
+  color: #962b2b;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.cards-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.result-card {
+  background: #fff;
+  border: 1px solid #e1e4ee;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(30, 34, 45, 0.04);
+}
+
+.result-card h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.result-card p,
+.result-card li {
+  margin: 0;
+  color: #333;
+  line-height: 1.45;
+}
+
+.result-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
